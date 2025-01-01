@@ -1,5 +1,4 @@
 ﻿
-using MainApp.Services;
 
 namespace MainApp.Services;
 
@@ -7,11 +6,15 @@ public class MenuDialogs
 {
 
     private readonly ListContacts listContacts;
+    private readonly CreateContact createContact;
 
     public MenuDialogs()
     {
         listContacts = new ListContacts();
+        createContact = new CreateContact();
     }
+
+  
 
     public void MainMenu()
     {
@@ -34,7 +37,7 @@ public class MenuDialogs
                     break;
 
                 case "2":
-                    CreateContact();
+                    createContact.ContactCreate();
                     break;
 
                 case "3":

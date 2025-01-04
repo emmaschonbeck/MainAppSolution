@@ -23,10 +23,14 @@ public class MenuDialogs
 
         while (running)
         {
-            Console.WriteLine("Welcome! Please choose an option.\n");
+            Console.WriteLine("================================================");
+            Console.WriteLine("                  MAIN MENU                     ");
+            Console.WriteLine("================================================\n");
+
+            Console.WriteLine("Welcome! Please choose an option.");
             Console.WriteLine("1. Contacts");
             Console.WriteLine("2. Create a contact");
-            Console.WriteLine("3. Exit");
+            Console.WriteLine("3. Exit\n");
 
             var option = Console.ReadLine();
 

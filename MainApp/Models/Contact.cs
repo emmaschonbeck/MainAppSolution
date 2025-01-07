@@ -1,5 +1,7 @@
 ﻿
 
+using MainApp.Helpers;
+
 namespace MainApp.Models;
 
 public class Contact
@@ -11,10 +13,10 @@ public class Contact
     public string Address { get; set; }
     public string PostalCode { get; set; }
     public string City { get; set; }
-    public Guid Id { get; set; }
+    public string Id { get; set; }
 
     public Contact()
     {
-        Id = Guid.NewGuid();
+        Id = UniqueIdentifierGenerator.Generate();
     }
 }

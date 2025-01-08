@@ -1,5 +1,4 @@
 ﻿
-
 using MainApp.Models;
 using System.Text.Json;
 
@@ -7,7 +6,7 @@ namespace MainApp.Services
 {
     public class ContactRepository
     {
-        private readonly string filePath = "contacts.json";
+        private readonly string filePath = "test_contacts.json";
 
 
         /* 
@@ -55,3 +54,4 @@ namespace MainApp.Services
         }
     }
 }
+

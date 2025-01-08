@@ -37,10 +37,15 @@ public class MenuDialogs
             switch (option)
             {
                 case "1":
+                    Console.Clear();
                     listContacts.ShowContacts();
+                    Console.WriteLine("\nPress any key to return to the menu.");
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
 
                 case "2":
+                    Console.Clear();
                     createContact.ContactCreate();
                     break;
 

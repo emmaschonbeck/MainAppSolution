@@ -12,11 +12,14 @@ namespace MainApp.Services
         private readonly ContactRepository contactRepository;
         private readonly ContactDisplayer contactDisplayer;
 
-        public ListContacts()
+        public ListContacts(string filePath)
         {
-            contactRepository = new ContactRepository();
+            contactRepository = new ContactRepository(filePath);
             contactDisplayer = new ContactDisplayer();
         }
+
+        public ListContacts() : this("contacts.json") { }
+
 
         public void ShowContacts()
         {

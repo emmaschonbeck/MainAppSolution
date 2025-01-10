@@ -7,27 +7,46 @@ namespace MainApp.Tests.Services
 {
     public class ListContacts_Tests
     {
+
+        /*
+         Detta är genererat av Chat GPT 4o - Detta testet kontrollerar att metoden ShowContacts hanterar fallet där inga kontakter existerar. För att testa detta så skapas en testfil som innehåller en tom lista ( [] )
+         Sedan omdirigeras konsolutmatningen till en StringWriter för att kunna fånga det som skrivs ut på konsolen. När denna metoden då anropas, i fallet där inga kontakter finns, så förväntas den skriva ut
+         "No contacts were found.". Därefter kontrollerar testet att detta meddelande finns i konsolutmatningen. Till sist så återställs konsolutmatningen till standard och testfilen som tidigare skapades
+         tas nu bort för att hålla systemet rent.
+         */
+
         [Fact]
 
         public void ShowContacts_NoContacts_FindsNoContactsMessage()
         {
-            var repository = new ContactRepository();
-            var testFilePath = "test_contacts.json";
-            File.WriteAllText(testFilePath, "[]");
 
-            var listContacts = new ListContacts();
+            var testFilePath = "empty_contacts_test.json";
+            var listContacts = new ListContacts(testFilePath);
 
-            using (var sw = new StringWriter())
+            try
             {
-                Console.SetOut(sw);
 
-                listContacts.ShowContacts();
+                Console.SetOut(Console.Out);
 
-                var result = sw.ToString();
-                Assert.Contains("No contacts were found.", result);
+                File.WriteAllText(testFilePath, "[]");
+
+                using (var sw = new StringWriter())
+                {
+                    Console.SetOut(sw);
+
+                    listContacts.ShowContacts();
+
+                    var result = sw.ToString();
+                    Assert.Contains("No contacts were found.", result);
+                }
             }
+            finally
+            {
+                Console.SetOut(Console.Out);
 
-            File.Delete(testFilePath);
+                if (File.Exists(testFilePath))
+                    File.Delete(testFilePath);
+            }
         }
 
         [Fact]
@@ -42,26 +61,33 @@ namespace MainApp.Tests.Services
 
             var json = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
             var testFilePath = "test_contacts.json";
-            File.WriteAllText(testFilePath, json);
-
-            var listContacts = new ListContacts();
-
-            using ( var sw = new StringWriter())
+            
+            try
             {
-                Console.SetOut(sw);
+                File.WriteAllText(testFilePath, json);
 
-                listContacts.ShowContacts();
+                var listContacts = new ListContacts(testFilePath);
 
-                var result = sw.ToString();
-                Assert.Contains("John", result);
-                Assert.Contains("Doe", result);
-                Assert.Contains("john@example.com", result);
-                Assert.Contains("Jane", result);
-                Assert.Contains("Doe", result);
-                Assert.Contains("jane@example.com", result);
+                using (var sw = new StringWriter())
+                {
+                    Console.SetOut(sw);
+
+                    listContacts.ShowContacts();
+
+                    var result = sw.ToString();
+                    Assert.Contains("John", result);
+                    Assert.Contains("Doe", result);
+                    Assert.Contains("john@example.com", result);
+                    Assert.Contains("Jane", result);
+                    Assert.Contains("Doe", result);
+                    Assert.Contains("jane@example.com", result);
+                }
             }
-
-            File.Delete(testFilePath);
+            finally
+            {
+                if (File.Exists(testFilePath))
+                    File.Delete(testFilePath);
+            }
         }
     }
 }

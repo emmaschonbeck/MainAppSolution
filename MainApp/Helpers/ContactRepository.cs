@@ -8,6 +8,11 @@ namespace MainApp.Services
     {
         private readonly string filePath = "test_contacts.json";
 
+        public ContactRepository(string filePath = "contacts.json")
+        {
+            this.filePath = filePath;
+        }
+
 
         /* 
            Denna kod är genererad av Chat GPT 4o - Denna kod är en metod som hämtar listan med kontakter.

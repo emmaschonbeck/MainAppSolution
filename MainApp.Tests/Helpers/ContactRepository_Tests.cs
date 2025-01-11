@@ -37,6 +37,11 @@ public class ContactRepository_Tests
 
     [Fact]
 
+    /*
+        Detta är genererat av Chat GPT 4o - Testet kollar så att metoden korrekt laddar kontakter från en giltig JSON-fil. Testet skapar då en fil med testdata och sparar den i JSON format, sedan använder den metoden för
+        att läsa in filen, och efter att filen har laddats så kontrolleras att antalet kontakter är korrekt och att all information stämmer. Och till sist så raderas testfilen för att städa upp.
+    */
+
     public void LoadContactsFromFile_ValidFile_ReturnsContacts()
     {
         var testFilePath = "valid_test_contacts.json";

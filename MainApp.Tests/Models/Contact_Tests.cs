@@ -55,4 +55,28 @@ public class Contact_Tests
         Assert.Null(contact.City);
         Assert.False(string.IsNullOrEmpty(contact.Id));
     }
+
+    [Fact]
+
+    public void Contact_ShouldAllowPropertyAssignment()
+    {
+        var contact = new Contact()
+        {
+            FirstName = "Paul",
+            LastName = "Paulson",
+            Email = "paul@example.com",
+            PhoneNumber = "1234567890",
+            Address = "1st avenue",
+            PostalCode = "12345",
+            City = "New York"
+        };
+
+        Assert.Equal("Paul", contact.FirstName);
+        Assert.Equal("Paulson", contact.LastName);
+        Assert.Equal("paul@example.com", contact.Email);
+        Assert.Equal("1234567890", contact.PhoneNumber);
+        Assert.Equal("1st avenue", contact.Address);
+        Assert.Equal("12345", contact.PostalCode);
+        Assert.Equal("New York", contact.City);
+    }
 }

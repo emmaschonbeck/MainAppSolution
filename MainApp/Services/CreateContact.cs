@@ -38,7 +38,7 @@ namespace MainApp.Services
             newContact.City = Console.ReadLine();
 
             Console.WriteLine("\nYour contact has been created successfully!");
-            Console.WriteLine($"ID: {newContact.Id}");
+            Console.WriteLine($"ID: {newContact.Id}\n");
             
             contactRepository.SaveContactToFile(newContact);
         }

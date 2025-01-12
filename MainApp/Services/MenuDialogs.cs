@@ -47,6 +47,9 @@ public class MenuDialogs
                 case "2":
                     Console.Clear();
                     createContact.ContactCreate();
+                    Console.WriteLine("\nPress any key to return to the menu.");
+                    Console.ReadKey();
+                    Console.Clear();
                     break;
 
                 case "3":
